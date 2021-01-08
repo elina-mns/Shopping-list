@@ -9,9 +9,12 @@ import UIKit
 
 class ListTableViewController: UIViewController {
     
-    private var items: [String] = (1...10).map { "Test\($0)" }
-    private var item: String = "Test"
-    private var itemsInBasket: [String] = []
+    private var items = [ItemModel(name: "Cola", price: 20, image: UIImage(named: "cola.png")!),
+                         ItemModel(name: "Fries", price: 10, image: UIImage(named: "fries.png")!),
+                         ItemModel(name: "Sushi", price: 50, image: UIImage(named: "sushi.png")!)]
+    
+    private var itemsInBasket: [ItemModel] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var fabButton = UIButton(type: .custom)
@@ -37,6 +40,7 @@ class ListTableViewController: UIViewController {
         fabButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         fabButton.layer.borderWidth = 3.0
         fabButton.addTarget(self, action: #selector(showBasketViewController), for: .touchUpInside)
+        fabButton.tintColor = .white
         view.addSubview(fabButton)
     }
     
@@ -55,9 +59,12 @@ extension ListTableViewController: ItemTableViewCellDelegate {
         let item = items[indexPath.row]
         itemsInBasket.append(item)
         
-        if item.count > 0 {
+        if itemsInBasket.count > 0 {
             fabButton.setTitle("\(itemsInBasket.count) items", for: .normal)
-        } else {
+            fabButton.setImage(UIImage(systemName: "cart"), for: .normal)
+            fabButton.imageEdgeInsets.left = -10
+        }
+        if itemsInBasket.count == 0 {
             fabButton.setTitle("No items", for: .normal)
         }
     }
@@ -74,9 +81,9 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
         let item = items[indexPath.row]
-        cell.name.text = item
-        // cell.price.text = item.price
-        // cell.icon.image = item.image
+        cell.name.text = item.name
+        cell.price.text = String(item.price)
+        cell.iconImage.image = item.image
         cell.delegate = self
         return cell
     }

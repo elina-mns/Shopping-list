@@ -8,36 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--BasketTableViewController-->
-        <scene sceneID="R1t-da-SIr">
-            <objects>
-                <tableViewController title="BasketTableViewController" id="wms-6d-B1j" customClass="BasketTableViewController" customModule="Shopping_list" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FAf-Zj-fsN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kZ2-u9-Hfx">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZ2-u9-Hfx" id="rsL-dC-ewh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="wms-6d-B1j" id="rf4-RL-BdE"/>
-                            <outlet property="delegate" destination="wms-6d-B1j" id="xON-u2-qi6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="cPN-tB-3hi"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oku-mC-nzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3473.913043478261" y="38.839285714285715"/>
-        </scene>
-        <!--List Table View Controller-->
+        <!--Shopping list-->
         <scene sceneID="0Mk-lb-NLm">
             <objects>
                 <viewController id="Weg-ib-eqt" customClass="ListTableViewController" customModule="Shopping_list" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-BA-b2M">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -59,24 +30,72 @@
                             <constraint firstItem="BzM-BA-b2M" firstAttribute="top" secondItem="0th-K3-z0B" secondAttribute="top" id="kw8-wE-B3w"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2PR-kB-5PN"/>
+                    <navigationItem key="navigationItem" title="Shopping list" id="2PR-kB-5PN"/>
                     <connections>
                         <outlet property="tableView" destination="BzM-BA-b2M" id="2jc-X0-6Q3"/>
-                        <segue destination="wms-6d-B1j" kind="show" identifier="showBasketViewController" id="uKx-fB-Fgr"/>
+                        <segue destination="1AA-66-FMn" kind="show" identifier="showBasketViewController" id="eWt-oG-x2D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sod-oV-Vqi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2523.1884057971015" y="38.839285714285715"/>
         </scene>
+        <!--BasketTableViewController-->
+        <scene sceneID="pBA-n2-2uN">
+            <objects>
+                <viewController title="BasketTableViewController" id="1AA-66-FMn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="maA-dh-8Zv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dgw-Ov-lcs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKm-I7-P1n">
+                                <rect key="frame" x="263" y="817" width="116" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Make order">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cat-ZP-MHF">
+                                <rect key="frame" x="51" y="823" width="112" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0UP-cF-I13"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dgw-Ov-lcs" firstAttribute="top" secondItem="maA-dh-8Zv" secondAttribute="top" id="2Yq-3E-lcD"/>
+                            <constraint firstItem="dgw-Ov-lcs" firstAttribute="leading" secondItem="0UP-cF-I13" secondAttribute="leading" id="8k7-ra-Ot1"/>
+                            <constraint firstItem="0UP-cF-I13" firstAttribute="trailing" secondItem="aKm-I7-P1n" secondAttribute="trailing" constant="35" id="9Gy-ho-EDu"/>
+                            <constraint firstItem="cat-ZP-MHF" firstAttribute="baseline" secondItem="aKm-I7-P1n" secondAttribute="baseline" id="E8g-Cy-Jvw"/>
+                            <constraint firstItem="dgw-Ov-lcs" firstAttribute="top" secondItem="maA-dh-8Zv" secondAttribute="top" id="JkX-AJ-yks"/>
+                            <constraint firstItem="aKm-I7-P1n" firstAttribute="top" secondItem="dgw-Ov-lcs" secondAttribute="bottom" constant="21" id="LqZ-Jx-eEf"/>
+                            <constraint firstItem="aKm-I7-P1n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cat-ZP-MHF" secondAttribute="trailing" constant="8" symbolic="YES" id="PcW-xG-mxM"/>
+                            <constraint firstItem="dgw-Ov-lcs" firstAttribute="trailing" secondItem="0UP-cF-I13" secondAttribute="trailing" id="Vqx-MO-Dga"/>
+                            <constraint firstItem="cat-ZP-MHF" firstAttribute="leading" secondItem="0UP-cF-I13" secondAttribute="leading" constant="51" id="bua-mi-ac2"/>
+                            <constraint firstItem="0UP-cF-I13" firstAttribute="bottom" secondItem="aKm-I7-P1n" secondAttribute="bottom" constant="4" id="qhj-BV-JoY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Checkout" id="hW3-zY-YJT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Gq-XVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3494.202898550725" y="38.839285714285715"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tfr-kG-wg8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5BR-gE-Ix0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y4P-V2-QaI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="y4P-V2-QaI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
