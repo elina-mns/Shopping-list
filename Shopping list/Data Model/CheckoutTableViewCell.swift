@@ -8,8 +8,7 @@
 import UIKit
 
 protocol CheckoutTableViewCellDelegate: class {
-    
-    func didTapAddOrSubstract(_ cell: UITableViewCell)
+    func stepperValueChanged(value: Double, _ cell: UITableViewCell)
 }
 
 class CheckoutTableViewCell: UITableViewCell {
@@ -29,17 +28,15 @@ class CheckoutTableViewCell: UITableViewCell {
                      bundle: nil)
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-
-    @IBAction func didTapAddOrSubstract(_ sender: Any) {
-        delegate?.didTapAddOrSubstract(self)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBAction func didChangeStepperValue(_ sender: UIStepper) {
+        let value = sender.value
+        if value == 1 {
+            chosenAmount.text = "\(Int(value)) item"
+        }
+        if value > 1 {
+            chosenAmount.text = "\(Int(value)) items"
+        }
+        delegate?.stepperValueChanged(value: sender.value, self)
     }
     
 }

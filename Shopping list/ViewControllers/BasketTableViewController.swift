@@ -21,6 +21,15 @@ class BasketTableViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(CheckoutTableViewCell.nib(), forCellReuseIdentifier: "CheckoutTableViewCell")
         configureFloatingActionButton()
+        setTotalPrice()
+    }
+    
+    func setTotalPrice() {
+        var price = 0
+        for element in checkoutItems {
+            price += element.item.price * element.count
+        }
+        totalPrice.text = "Total price: \(price)"
     }
     
     func configureFloatingActionButton() {
@@ -56,8 +65,24 @@ extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource 
         cell.checkoutName.text = chosenItem.item.name
         cell.checkoutPrice.text = String(chosenItem.item.price)
         cell.iconImage.image = chosenItem.item.image
-        cell.chosenAmount.text = "\(chosenItem.count)"
+        cell.stepper.value = Double(chosenItem.count)
+        cell.didChangeStepperValue(cell.stepper)
+        cell.delegate = self
         return cell
     }
     
+
+    
 }
+
+extension BasketTableViewController: CheckoutTableViewCellDelegate {
+    func stepperValueChanged(value: Double, _ cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        checkoutItems[indexPath.row].count = Int(value)
+        setTotalPrice()
+    }
+}
+
+
