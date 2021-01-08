@@ -9,11 +9,10 @@ import UIKit
 
 class ListTableViewController: UIViewController {
     
-    var items = [ItemModel(name: "Cola", price: 20, image: UIImage(named: "cola.png")!),
-                         ItemModel(name: "Fries", price: 10, image: UIImage(named: "fries.png")!),
-                         ItemModel(name: "Sushi", price: 50, image: UIImage(named: "sushi.png")!)]
+    var items: [ItemModel] = [.cola, .fries, .sushi]
     
     var itemsInBasket: [ItemModel] = []
+    var itemsCountMap = [ItemModel: Int]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -54,7 +53,7 @@ class ListTableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let basketController = segue.destination as? BasketTableViewController {
-            basketController.itemsForCheckout = itemsInBasket
+            basketController.checkoutItems = itemsCountMap.map { ($0, $1) }
         }
     }
 }
@@ -67,6 +66,11 @@ extension ListTableViewController: ItemTableViewCellDelegate {
         }
         let item = items[indexPath.row]
         itemsInBasket.append(item)
+        if itemsCountMap[item] != nil {
+            itemsCountMap[item]! += 1
+        } else {
+            itemsCountMap[item] = 1
+        }
         
         if itemsInBasket.count == 1 {
             fabButton.setTitle("\(itemsInBasket.count) item", for: .normal)

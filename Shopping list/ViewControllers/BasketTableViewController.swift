@@ -13,7 +13,7 @@ class BasketTableViewController: UIViewController {
     @IBOutlet weak var totalPrice: UILabel!
     
     private var fabButton = UIButton(type: .custom)
-    var itemsForCheckout = [ItemModel]()
+    var checkoutItems = [(item: ItemModel, count: Int)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +45,18 @@ class BasketTableViewController: UIViewController {
 extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemsForCheckout.count
+        checkoutItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CheckoutTableViewCell", for: indexPath) as? CheckoutTableViewCell else {
             fatalError()
         }
-        let chosenItem = itemsForCheckout[indexPath.row]
-        cell.checkoutName.text = chosenItem.name
-        cell.checkoutPrice.text = String(chosenItem.price)
-        cell.iconImage.image = chosenItem.image
+        let chosenItem = checkoutItems[indexPath.row]
+        cell.checkoutName.text = chosenItem.item.name
+        cell.checkoutPrice.text = String(chosenItem.item.price)
+        cell.iconImage.image = chosenItem.item.image
+        cell.chosenAmount.text = "\(chosenItem.count)"
         return cell
     }
     
