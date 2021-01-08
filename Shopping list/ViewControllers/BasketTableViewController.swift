@@ -69,6 +69,7 @@ extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource 
         cell.stepper.value = Double(chosenItem.count)
         cell.didChangeStepperValue(cell.stepper)
         cell.delegate = self
+        cell.stepperDelegate = self
         return cell
     }
     
@@ -76,12 +77,39 @@ extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource 
     
 }
 
+extension BasketTableViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.updateModel(at: indexPath)
+        }
+        deleteAction.image = UIImage(named: "delete")
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        return options
+    }
+    
+    func updateModel(at indexPath: IndexPath) {
+        checkoutItems.remove(at: indexPath.row)
+        setTotalPrice()
+    }
+}
+
 extension BasketTableViewController: CheckoutTableViewCellDelegate {
     func stepperValueChanged(value: Double, _ cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        checkoutItems[indexPath.row].count = Int(value)
+        if value == 0 {
+            checkoutItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        } else {
+            checkoutItems[indexPath.row].count = Int(value)
+        }
         setTotalPrice()
     }
 }

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 protocol CheckoutTableViewCellDelegate: class {
     func stepperValueChanged(value: Double, _ cell: UITableViewCell)
 }
 
-class CheckoutTableViewCell: UITableViewCell {
+class CheckoutTableViewCell: SwipeTableViewCell {
     
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var checkoutName: UILabel!
@@ -19,8 +20,7 @@ class CheckoutTableViewCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var chosenAmount: UILabel!
     
-    
-    weak var delegate: CheckoutTableViewCellDelegate?
+    weak var stepperDelegate: CheckoutTableViewCellDelegate?
     
     static let identifier = "CheckoutTableViewCell"
     static func nib() -> UINib {
@@ -36,7 +36,7 @@ class CheckoutTableViewCell: UITableViewCell {
         if value > 1 {
             chosenAmount.text = "\(Int(value)) items"
         }
-        delegate?.stepperValueChanged(value: sender.value, self)
+        stepperDelegate?.stepperValueChanged(value: sender.value, self)
     }
     
 }

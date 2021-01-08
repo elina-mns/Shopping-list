@@ -130,7 +130,6 @@
 				AB743098B6DC9E35F98CEA53 /* Pods-Shopping list.debug.xcconfig */,
 				BC452B371CC69663C5DD3E23 /* Pods-Shopping list.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
