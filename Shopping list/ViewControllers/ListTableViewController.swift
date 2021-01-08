@@ -10,7 +10,6 @@ import UIKit
 class ListTableViewController: UIViewController {
     
     var items: [ItemModel] = [.cola, .fries, .sushi, .bento, .apple, .burger, .coffee]
-    
     var itemsInBasket: [ItemModel] = []
     var itemsCountMap = [ItemModel: Int]()
     
@@ -58,6 +57,8 @@ class ListTableViewController: UIViewController {
     }
 }
 
+//MARK: - ItemTableViewCellDelegate
+
 extension ListTableViewController: ItemTableViewCellDelegate {
     
     func didTapAddToBag(_ cell: UITableViewCell) {
@@ -84,6 +85,8 @@ extension ListTableViewController: ItemTableViewCellDelegate {
         }
     }
 }
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
     

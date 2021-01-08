@@ -40,17 +40,17 @@ class BasketTableViewController: UIViewController {
         fabButton.layer.cornerRadius = 50
         fabButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         fabButton.layer.borderWidth = 3.0
-        //fabButton.addTarget(self, action: #selector(), for: .touchUpInside)
         fabButton.tintColor = .white
         fabButton.setTitle("Make Order", for: .normal)
         fabButton.titleLabel?.numberOfLines = 0
         fabButton.titleLabel?.lineBreakMode = .byWordWrapping
         fabButton.titleLabel?.font = .systemFont(ofSize: 20)
-        
         view.addSubview(fabButton)
     }
 
 }
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -72,12 +72,12 @@ extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource 
         cell.stepperDelegate = self
         return cell
     }
-    
-
-    
 }
 
+//MARK: - SwipeTableViewCellDelegate
+
 extension BasketTableViewController: SwipeTableViewCellDelegate {
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
@@ -99,7 +99,10 @@ extension BasketTableViewController: SwipeTableViewCellDelegate {
     }
 }
 
+//MARK: - CheckoutTableViewCellDelegate
+
 extension BasketTableViewController: CheckoutTableViewCellDelegate {
+    
     func stepperValueChanged(value: Double, _ cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
