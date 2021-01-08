@@ -75,6 +75,7 @@
                     <navigationItem key="navigationItem" title="Checkout" id="hW3-zY-YJT"/>
                     <connections>
                         <outlet property="tableView" destination="dgw-Ov-lcs" id="IdD-5e-hNJ"/>
+                        <outlet property="totalPrice" destination="cat-ZP-MHF" id="VDb-1M-w3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Gq-XVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
