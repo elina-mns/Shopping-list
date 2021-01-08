@@ -9,7 +9,7 @@ import UIKit
 
 class ListTableViewController: UIViewController {
     
-    var items: [ItemModel] = [.cola, .fries, .sushi]
+    var items: [ItemModel] = [.cola, .fries, .sushi, .bento, .apple, .burger, .coffee]
     
     var itemsInBasket: [ItemModel] = []
     var itemsCountMap = [ItemModel: Int]()
