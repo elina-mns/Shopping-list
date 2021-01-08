@@ -43,7 +43,7 @@
         <!--BasketTableViewController-->
         <scene sceneID="pBA-n2-2uN">
             <objects>
-                <viewController title="BasketTableViewController" id="1AA-66-FMn" sceneMemberID="viewController">
+                <viewController title="BasketTableViewController" id="1AA-66-FMn" customClass="BasketTableViewController" customModule="Shopping_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maA-dh-8Zv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,15 +52,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKm-I7-P1n">
-                                <rect key="frame" x="263" y="817" width="116" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Make order">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cat-ZP-MHF">
-                                <rect key="frame" x="51" y="823" width="112" height="29"/>
+                                <rect key="frame" x="87" y="823" width="112" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,19 +62,20 @@
                         <viewLayoutGuide key="safeArea" id="0UP-cF-I13"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="0UP-cF-I13" firstAttribute="bottom" secondItem="cat-ZP-MHF" secondAttribute="bottom" constant="10" id="2Bn-PR-LnW"/>
                             <constraint firstItem="dgw-Ov-lcs" firstAttribute="top" secondItem="maA-dh-8Zv" secondAttribute="top" id="2Yq-3E-lcD"/>
                             <constraint firstItem="dgw-Ov-lcs" firstAttribute="leading" secondItem="0UP-cF-I13" secondAttribute="leading" id="8k7-ra-Ot1"/>
-                            <constraint firstItem="0UP-cF-I13" firstAttribute="trailing" secondItem="aKm-I7-P1n" secondAttribute="trailing" constant="35" id="9Gy-ho-EDu"/>
-                            <constraint firstItem="cat-ZP-MHF" firstAttribute="baseline" secondItem="aKm-I7-P1n" secondAttribute="baseline" id="E8g-Cy-Jvw"/>
+                            <constraint firstItem="cat-ZP-MHF" firstAttribute="top" secondItem="dgw-Ov-lcs" secondAttribute="bottom" constant="27" id="DVZ-c6-Jzp"/>
                             <constraint firstItem="dgw-Ov-lcs" firstAttribute="top" secondItem="maA-dh-8Zv" secondAttribute="top" id="JkX-AJ-yks"/>
-                            <constraint firstItem="aKm-I7-P1n" firstAttribute="top" secondItem="dgw-Ov-lcs" secondAttribute="bottom" constant="21" id="LqZ-Jx-eEf"/>
-                            <constraint firstItem="aKm-I7-P1n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cat-ZP-MHF" secondAttribute="trailing" constant="8" symbolic="YES" id="PcW-xG-mxM"/>
+                            <constraint firstItem="0UP-cF-I13" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cat-ZP-MHF" secondAttribute="trailing" symbolic="YES" id="S8f-AU-jcv"/>
                             <constraint firstItem="dgw-Ov-lcs" firstAttribute="trailing" secondItem="0UP-cF-I13" secondAttribute="trailing" id="Vqx-MO-Dga"/>
-                            <constraint firstItem="cat-ZP-MHF" firstAttribute="leading" secondItem="0UP-cF-I13" secondAttribute="leading" constant="51" id="bua-mi-ac2"/>
-                            <constraint firstItem="0UP-cF-I13" firstAttribute="bottom" secondItem="aKm-I7-P1n" secondAttribute="bottom" constant="4" id="qhj-BV-JoY"/>
+                            <constraint firstItem="cat-ZP-MHF" firstAttribute="leading" secondItem="0UP-cF-I13" secondAttribute="leading" constant="87" id="bua-mi-ac2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Checkout" id="hW3-zY-YJT"/>
+                    <connections>
+                        <outlet property="tableView" destination="dgw-Ov-lcs" id="IdD-5e-hNJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Bq-Gq-XVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
