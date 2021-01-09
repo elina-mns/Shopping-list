@@ -57,8 +57,9 @@ class BasketTableViewController: UIViewController {
     func passItemstoJSON() {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let data = try! encoder.encode(CheckoutBasket(items: checkoutItems, total: totalPriceValue))
-        guard let encodedMessage = String(data: data, encoding: .utf8) else { return }
+        guard let data = try? encoder.encode(CheckoutBasket(items: checkoutItems, total: totalPriceValue)),
+              let encodedMessage = String(data: data, encoding: .utf8)
+        else { return }
         showAlert(title: "JSON checkout", message: encodedMessage)
     }
     
@@ -97,7 +98,6 @@ extension BasketTableViewController: UITableViewDelegate, UITableViewDataSource 
 //MARK: - SwipeTableViewCellDelegate
 
 extension BasketTableViewController: SwipeTableViewCellDelegate {
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
@@ -122,7 +122,6 @@ extension BasketTableViewController: SwipeTableViewCellDelegate {
 //MARK: - CheckoutTableViewCellDelegate
 
 extension BasketTableViewController: CheckoutTableViewCellDelegate {
-    
     func stepperValueChanged(value: Double, _ cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         if value == 0 {

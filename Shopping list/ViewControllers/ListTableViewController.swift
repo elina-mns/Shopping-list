@@ -21,19 +21,11 @@ class ListTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ItemTableViewCell.nib(), forCellReuseIdentifier: "ItemTableViewCell")
+        tableView.register(ItemTableViewCell.nib(), forCellReuseIdentifier: ItemTableViewCell.identifier)
         configureFloatingActionButton()
-        if itemsInBasket.count == 0 {
-            fabButton.setTitle("No items", for: .normal)
-        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    
-    func configureFloatingActionButton() {
+    private func configureFloatingActionButton() {
         fabButton.frame = CGRect(x: 280, y: 700, width: 100, height: 100)
         fabButton.backgroundColor = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
         fabButton.clipsToBounds = true
@@ -42,6 +34,7 @@ class ListTableViewController: UIViewController {
         fabButton.layer.borderWidth = 3.0
         fabButton.addTarget(self, action: #selector(showBasketViewController), for: .touchUpInside)
         fabButton.tintColor = .white
+        fabButton.setTitle("No items", for: .normal)
         view.addSubview(fabButton)
     }
     

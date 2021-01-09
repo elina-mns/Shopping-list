@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31086D7B25AA0D8900A01253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31086D7A25AA0D8900A01253 /* Assets.xcassets */; };
 		3131015825A7C2BE006FB7C6 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131015725A7C2BE006FB7C6 /* ItemModel.swift */; };
-		3131015C25A808EB006FB7C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131015B25A808EB006FB7C6 /* Assets.xcassets */; };
 		3131016025A8BEA8006FB7C6 /* CheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131015E25A8BEA8006FB7C6 /* CheckoutTableViewCell.swift */; };
 		3131016125A8BEA8006FB7C6 /* CheckoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3131015F25A8BEA8006FB7C6 /* CheckoutTableViewCell.xib */; };
 		3131016C25A925A7006FB7C6 /* CheckoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131016B25A925A7006FB7C6 /* CheckoutItem.swift */; };
@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31086D7A25AA0D8900A01253 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3131015725A7C2BE006FB7C6 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		3131015B25A808EB006FB7C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		3131015E25A8BEA8006FB7C6 /* CheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		3131015F25A8BEA8006FB7C6 /* CheckoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutTableViewCell.xib; sourceTree = "<group>"; };
 		3131016B25A925A7006FB7C6 /* CheckoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutItem.swift; sourceTree = "<group>"; };
@@ -66,6 +66,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3131017225AA0AE4006FB7C6 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3131015E25A8BEA8006FB7C6 /* CheckoutTableViewCell.swift */,
+				3131015F25A8BEA8006FB7C6 /* CheckoutTableViewCell.xib */,
+				31BC008625A79FEC004705A8 /* ItemTableViewCell.swift */,
+				31BC008725A79FEC004705A8 /* ItemTableViewCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		31BC005225A79021004705A8 = {
 			isa = PBXGroup;
 			children = (
@@ -87,13 +98,14 @@
 		31BC005D25A79021004705A8 /* Shopping list */ = {
 			isa = PBXGroup;
 			children = (
+				3131017225AA0AE4006FB7C6 /* CustomCells */,
 				31BC005E25A79021004705A8 /* AppDelegate.swift */,
 				31BC006025A79021004705A8 /* SceneDelegate.swift */,
 				31BC007C25A79A95004705A8 /* Data Model */,
 				31BC007725A794EC004705A8 /* ViewControllers */,
 				31BC008025A79D7A004705A8 /* Views */,
 				31BC006C25A79024004705A8 /* Info.plist */,
-				3131015B25A808EB006FB7C6 /* Assets.xcassets */,
+				31086D7A25AA0D8900A01253 /* Assets.xcassets */,
 			);
 			path = "Shopping list";
 			sourceTree = "<group>";
@@ -110,10 +122,6 @@
 		31BC007C25A79A95004705A8 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				3131015E25A8BEA8006FB7C6 /* CheckoutTableViewCell.swift */,
-				3131015F25A8BEA8006FB7C6 /* CheckoutTableViewCell.xib */,
-				31BC008625A79FEC004705A8 /* ItemTableViewCell.swift */,
-				31BC008725A79FEC004705A8 /* ItemTableViewCell.xib */,
 				3131015725A7C2BE006FB7C6 /* ItemModel.swift */,
 				3131016B25A925A7006FB7C6 /* CheckoutItem.swift */,
 				3131016F25A92604006FB7C6 /* CheckoutBasket.swift */,
@@ -199,9 +207,9 @@
 			files = (
 				31BC006B25A79024004705A8 /* LaunchScreen.storyboard in Resources */,
 				31BC008925A79FEC004705A8 /* ItemTableViewCell.xib in Resources */,
-				3131015C25A808EB006FB7C6 /* Assets.xcassets in Resources */,
 				3131016125A8BEA8006FB7C6 /* CheckoutTableViewCell.xib in Resources */,
 				31BC006625A79021004705A8 /* Main.storyboard in Resources */,
+				31086D7B25AA0D8900A01253 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,7 +38,6 @@ class CheckoutTableViewCell: SwipeTableViewCell {
         }
         stepperDelegate?.stepperValueChanged(value: sender.value, self)
     }
-    
 }
 
 
