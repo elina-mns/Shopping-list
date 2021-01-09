@@ -52,7 +52,7 @@ class ListTableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let basketController = segue.destination as? BasketTableViewController {
-            basketController.checkoutItems = itemsCountMap.map { ($0, $1) }
+            basketController.checkoutItems = itemsCountMap.map { CheckoutItem(item: $0, count: $1) }
         }
     }
 }

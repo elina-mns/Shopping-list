@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ItemModel: Hashable {
+struct ItemModel: Hashable, Encodable {
     let name: String
     let price: Int
     let image: UIImage?
@@ -19,4 +19,9 @@ struct ItemModel: Hashable {
     static let apple = ItemModel(name: "Apple", price: 5, image: UIImage(named: "apple.png"))
     static let burger = ItemModel(name: "Burger", price: 20, image: UIImage(named: "burger.png"))
     static let coffee = ItemModel(name: "Coffee", price: 20, image: UIImage(named: "coffee.png"))
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case price
+    }
 }

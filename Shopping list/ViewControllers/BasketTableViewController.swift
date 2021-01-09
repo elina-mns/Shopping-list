@@ -14,7 +14,15 @@ class BasketTableViewController: UIViewController {
     @IBOutlet weak var totalPrice: UILabel!
     
     private var fabButton = UIButton(type: .custom)
-    var checkoutItems = [(item: ItemModel, count: Int)]()
+    var checkoutItems = [CheckoutItem]()
+    
+    private var totalPriceValue: Int {
+        var price = 0
+        for element in checkoutItems {
+            price += element.item.price * element.count
+        }
+        return price
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +34,10 @@ class BasketTableViewController: UIViewController {
     }
     
     func setTotalPrice() {
-        var price = 0
-        for element in checkoutItems {
-            price += element.item.price * element.count
-        }
-        totalPrice.text = "Total price: \(price)"
+        totalPrice.text = "Total price: \(totalPriceValue)"
     }
     
-    func configureFloatingActionButton() {
+    private func configureFloatingActionButton() {
         fabButton.frame = CGRect(x: 280, y: 700, width: 100, height: 100)
         fabButton.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         fabButton.clipsToBounds = true
@@ -46,6 +50,22 @@ class BasketTableViewController: UIViewController {
         fabButton.titleLabel?.lineBreakMode = .byWordWrapping
         fabButton.titleLabel?.font = .systemFont(ofSize: 20)
         view.addSubview(fabButton)
+        fabButton.addTarget(self, action: #selector(passItemstoJSON), for: .touchUpInside)
+    }
+    
+    @objc
+    func passItemstoJSON() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let data = try! encoder.encode(CheckoutBasket(items: checkoutItems, total: totalPriceValue))
+        guard let encodedMessage = String(data: data, encoding: .utf8) else { return }
+        showAlert(title: "JSON checkout", message: encodedMessage)
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true)
     }
 
 }
@@ -104,9 +124,7 @@ extension BasketTableViewController: SwipeTableViewCellDelegate {
 extension BasketTableViewController: CheckoutTableViewCellDelegate {
     
     func stepperValueChanged(value: Double, _ cell: UITableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
         if value == 0 {
             checkoutItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
